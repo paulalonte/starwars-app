@@ -1,0 +1,15 @@
+@import '../../app.component.scss';
+
+.page-padding {
+    @extend %page-heading-style;
+
+    h2 {
+        padding: 0 0.2em;
+    }
+}
+
+.flex-container {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}

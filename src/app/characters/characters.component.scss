@@ -1,0 +1,43 @@
+.list-group-item {
+    cursor: pointer;
+    a {
+        padding: 0.6em;
+    }
+    transition: all 0.8s ease;
+
+    &:hover {
+        background-color: #e3fafa;
+        border-left: 8px solid #1986d4
+    }
+
+    h5 {
+        margin-bottom: 0;
+    }
+}
+
+.nav-pagination {
+    margin-top: 1em;
+}
+
+.page-item {
+    cursor: pointer;
+}
+
+footer {
+    background: #eee;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+
+    .container {
+        height: inherit;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        margin: 0;
+    }
+}

@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <app-header [headerText]="'Character Details'"></app-header>
+
+    <section *ngIf="!(isFetching$ | async)">
+      {{ (characterDetail$ | async)?.name }}
+    </section>
+  </div>
+</div>

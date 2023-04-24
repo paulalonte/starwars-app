@@ -1,0 +1,10 @@
+/* variables */
+/**
+ I could create another file for global variables. I'll just add it here instead.
+*/
+
+$page-padding: 2em 0;
+
+%page-heading-style {
+    padding: $page-padding;
+}

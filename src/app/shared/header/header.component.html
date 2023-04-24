@@ -1,0 +1,10 @@
+<section class="page-padding flex-container">
+  <h2>{{ headerText }}</h2>
+  <div
+    class="spinner-border text-secondary"
+    role="status"
+    *ngIf="isFetching$ | async"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</section>

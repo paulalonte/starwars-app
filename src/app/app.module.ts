@@ -12,18 +12,26 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.state';
 
+import { HttpClientModule } from '@angular/common/http';
+import { CharactersEffects } from './effects/characters.effects';
+import { HeaderComponent } from './shared/header/header.component';
+import { CharacterDetailComponent } from './characters/character-detail/character-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     CharactersComponent,
     HomeComponent,
+    HeaderComponent,
+    CharacterDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CharactersEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
