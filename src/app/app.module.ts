@@ -7,18 +7,28 @@ import { NavComponent } from './nav/nav.component';
 import { CharactersComponent } from './characters/characters.component';
 import { HomeComponent } from './home/home.component';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducer } from './store/app.state';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     CharactersComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
