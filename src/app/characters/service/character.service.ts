@@ -10,6 +10,7 @@ import { selectCharactersReducer } from 'src/app/store/character/character.selec
 })
 export class CharacterService {
   apiURL: string = 'https://www.swapi.tech/api/people';
+  planetUrl: string = 'https://www.swapi.tech/api/planets';
 
   selectedPage!: number;
   storeSubscription!: Subscription;
@@ -30,5 +31,9 @@ export class CharacterService {
 
   fetchCharacter(id: string) {
     return this.http.get(`${this.apiURL}/${id}`);
+  }
+
+  fetchPlanet(id: string) {
+    return this.http.get(`${this.planetUrl}/${id}`);
   }
 }

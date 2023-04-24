@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CharactersEffects } from './effects/characters.effects';
 import { HeaderComponent } from './shared/header/header.component';
 import { CharacterDetailComponent } from './characters/character-detail/character-detail.component';
+import { HomeworldComponent } from './characters/homeworld/homeworld.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CharacterDetailComponent } from './characters/character-detail/characte
     HomeComponent,
     HeaderComponent,
     CharacterDetailComponent,
+    HomeworldComponent,
   ],
   imports: [
     BrowserModule,

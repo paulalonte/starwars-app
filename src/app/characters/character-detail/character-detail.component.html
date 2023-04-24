@@ -4,7 +4,9 @@
       <app-header [headerText]="(characterDetail$ | async)?.name"></app-header>
       <div class="homeworld-btn" *ngIf="!(isFetching$ | async)">
         <button class="btn btn-secondary" (click)="onBack()">Back</button>
-        <button class="btn btn-primary">See homeworld</button>
+        <button class="btn btn-primary" (click)="onHomeworldClick()">
+          See homeworld
+        </button>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 import { CharacterDetail } from './../../store/app.state';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { fetchCharacter } from './../../store/character/character.actions';
 import { Store } from '@ngrx/store';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -25,7 +25,8 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<AppState>,
     private activatRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
     this.isFetching$ = this.store.select(selectIsFetching);
     this.routeSubscription = this.activatRoute.params.subscribe(
@@ -39,6 +40,17 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(fetchCharacter({ id: this.id }));
+  }
+
+  onHomeworldClick() {
+    this.characterDetail$.subscribe((data) => {
+      const planetId = data.homeworld?.split('/').pop();
+
+      console.log(planetId);
+      this.router.navigate([`planet/${planetId}`], {
+        relativeTo: this.activatRoute,
+      });
+    });
   }
 
   onBack() {

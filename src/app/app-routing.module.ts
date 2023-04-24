@@ -1,3 +1,4 @@
+import { HomeworldComponent } from './characters/homeworld/homeworld.component';
 import { CharacterDetailComponent } from './characters/character-detail/character-detail.component';
 import { HomeComponent } from './home/home.component';
 import { CharactersComponent } from './characters/characters.component';
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'characters/:id',
     component: CharacterDetailComponent,
+  },
+  {
+    path: 'characters/:id/planet/:id',
+    component: HomeworldComponent,
   },
 ];
 
