@@ -10,7 +10,6 @@ export interface CharacterDetail {
   gender: string;
   name: string;
   homeworld: string;
-  url: string;
 }
 
 export interface Character {
@@ -22,13 +21,14 @@ export interface Character {
 export interface CharacterState {
   characters: Character[];
   isFetching: boolean;
-  characterDetail: Partial<CharacterDetail>;
+  characterDetail: Record<string, Partial<CharacterDetail>>;
+  currPage: number;
 }
 
 export interface AppState {
-  characters: CharacterState;
+  characterState: CharacterState;
 }
 
 export const appReducer = {
-  characters: characterReducer,
+  characterState: characterReducer,
 };

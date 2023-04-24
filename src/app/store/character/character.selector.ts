@@ -1,17 +1,19 @@
 import { CharacterState, AppState } from './../app.state';
 import { createSelector } from '@ngrx/store';
 
-export const selectCharactersReducer = (state: AppState) => state.characters;
+export const selectCharactersReducer = (state: AppState) =>
+  state.characterState;
 
 export const selectIsFetching = (state: AppState) =>
-  state.characters.isFetching;
+  state.characterState.isFetching;
 
 export const selectCharacters = createSelector(
   selectCharactersReducer,
   (state: CharacterState) => state.characters
 );
 
-export const selectCharacterDetail = createSelector(
-  selectCharactersReducer,
-  (state: CharacterState) => state.characterDetail
-);
+export const selectCurrentPage = (state: AppState) =>
+  state.characterState.currPage;
+
+export const selectCharacterDetail = (state: AppState, id: string) =>
+  state.characterState.characterDetail[id];

@@ -1,9 +1,29 @@
-<div class="container">
+<div class="container character-detail">
   <div class="row">
-    <app-header [headerText]="'Character Details'"></app-header>
+    <div class="col-md-3">
+      <app-header [headerText]="(characterDetail$ | async)?.name"></app-header>
+      <div class="homeworld-btn" *ngIf="!(isFetching$ | async)">
+        <button class="btn btn-secondary" (click)="onBack()">Back</button>
+        <button class="btn btn-primary">See homeworld</button>
+      </div>
+    </div>
 
-    <section *ngIf="!(isFetching$ | async)">
-      {{ (characterDetail$ | async)?.name }}
-    </section>
+    <div class="col-md-9 details">
+      <section *ngIf="!(isFetching$ | async)">
+        <ol class="list-group">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+            *ngFor="let detail of characterDetail$ | async | keyvalue"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-normal detail-key">
+                {{ detail.key.replace("_", " ") | uppercase }}
+              </div>
+              <span>{{ detail.value | titlecase }}</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </div>
   </div>
 </div>

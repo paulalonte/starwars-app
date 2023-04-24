@@ -1,11 +1,16 @@
 import {
   selectCharacters,
+  selectCharactersReducer,
+  selectCurrentPage,
   selectIsFetching,
 } from './../store/character/character.selector';
-import { fetchCharacters } from './../store/character/character.actions';
+import {
+  fetchCharacters,
+  setCurrentPage,
+} from './../store/character/character.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { AppState, Character } from '../store/app.state';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -29,12 +34,13 @@ export class CharactersComponent implements OnInit {
   ) {
     this.isFetching$ = this.store.select(selectIsFetching);
     this.characters$ = this.store.select(selectCharacters);
+    this.store
+      .select(selectCharactersReducer)
+      .subscribe((data) => (this.selectedPage = data.currPage));
   }
 
   ngOnInit(): void {
-    this.store.dispatch(
-      fetchCharacters({ pageSize: 1, limit: this.pageLimit })
-    );
+    this.store.dispatch(fetchCharacters());
   }
 
   onCharacterClick(character: Character) {
@@ -42,9 +48,6 @@ export class CharactersComponent implements OnInit {
   }
 
   onPaginationClick(page: number) {
-    this.selectedPage = page;
-    this.store.dispatch(
-      fetchCharacters({ pageSize: page, limit: this.pageLimit })
-    );
+    this.store.dispatch(setCurrentPage({ page }));
   }
 }

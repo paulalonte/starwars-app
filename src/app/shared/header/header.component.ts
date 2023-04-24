@@ -10,7 +10,7 @@ import { selectIsFetching } from 'src/app/store/character/character.selector';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() headerText!: string;
+  @Input() headerText!: string | undefined;
   isFetching$!: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {
