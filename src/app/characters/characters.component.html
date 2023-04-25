@@ -2,7 +2,7 @@
   <div class="row">
     <app-header [headerText]="'Star Wars Characters'"></app-header>
 
-    <div class="list">
+    <div class="list" [ngClass]="{ disabled: isFetching$ | async }">
       <ul class="list-group" [attr.data-cy]="'characters-container'">
         <li
           *ngFor="let character of characters$ | async"
