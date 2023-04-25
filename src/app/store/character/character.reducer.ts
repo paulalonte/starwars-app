@@ -8,6 +8,8 @@ export const initialState: CharacterState = {
   isFetching: false,
   characterDetail: {},
   currPage: 1,
+  totalRecords: 0,
+  fetchedPages: [1],
 };
 
 export const characterReducer = createReducer(
@@ -16,11 +18,15 @@ export const characterReducer = createReducer(
     ...state,
     isFetching: true,
   })),
-  on(CharacterActions.fetchCharactersSuccess, (state, { characters }) => ({
-    ...state,
-    isFetching: false,
-    characters,
-  })),
+  on(
+    CharacterActions.fetchCharactersSuccess,
+    (state, { characters, totalRecords }) => ({
+      ...state,
+      isFetching: false,
+      characters,
+      totalRecords,
+    })
+  ),
   on(CharacterActions.fetchCharacter, (state) => ({
     ...state,
     isFetching: true,
@@ -36,6 +42,7 @@ export const characterReducer = createReducer(
     return {
       ...state,
       currPage: page,
+      fetchedPages: [...state.fetchedPages, page],
     };
   })
 );

@@ -5,7 +5,7 @@ export const fetchCharacters = createAction('[Character] Fetch characters');
 
 export const fetchCharactersSuccess = createAction(
   '[Character] Fetch characters success',
-  props<{ characters: Character[] }>()
+  props<{ characters: Character[]; totalRecords: number }>()
 );
 
 export const fetchCharacter = createAction(

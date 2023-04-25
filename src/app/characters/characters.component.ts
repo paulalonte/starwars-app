@@ -8,9 +8,9 @@ import {
   fetchCharacters,
   setCurrentPage,
 } from './../store/character/character.actions';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, tap, Subscription } from 'rxjs';
 import { AppState, Character } from '../store/app.state';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -19,13 +19,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, OnDestroy {
   characters$!: Observable<Character[]>;
   isFetching$!: Observable<boolean>;
   selectedPage = 1;
   pageLimit = 10;
 
-  totalPages = [1, 2, 3, 4, 5];
+  totalRecords!: number;
+  rowsPerPage = 10;
+  totalPagination!: number;
+
+  totalPages: number[] = [];
+
+  storeSubscription!: Subscription;
 
   constructor(
     private store: Store<AppState>,
@@ -34,9 +40,21 @@ export class CharactersComponent implements OnInit {
   ) {
     this.isFetching$ = this.store.select(selectIsFetching);
     this.characters$ = this.store.select(selectCharacters);
-    this.store
+    this.storeSubscription = this.store
       .select(selectCharactersReducer)
-      .subscribe((data) => (this.selectedPage = data.currPage));
+      .subscribe((data) => {
+        this.selectedPage = data.currPage;
+        this.totalRecords = data.totalRecords;
+        this.totalPagination = Math.ceil(this.totalRecords / this.rowsPerPage);
+        this.createPagination();
+      });
+  }
+
+  createPagination() {
+    this.totalPages = [];
+    for (let i = 0; i < this.totalPagination; i++) {
+      this.totalPages.push(i + 1);
+    }
   }
 
   ngOnInit(): void {
@@ -49,5 +67,9 @@ export class CharactersComponent implements OnInit {
 
   onPaginationClick(page: number) {
     this.store.dispatch(setCurrentPage({ page }));
+  }
+
+  ngOnDestroy(): void {
+    this.storeSubscription.unsubscribe();
   }
 }

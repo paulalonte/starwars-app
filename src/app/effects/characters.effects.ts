@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { map, catchError, exhaustMap, switchMap } from 'rxjs/operators';
+import {
+  map,
+  catchError,
+  exhaustMap,
+  switchMap,
+  withLatestFrom,
+  filter,
+} from 'rxjs/operators';
 
 import * as CharacterActions from '../store/character/character.actions';
 import { throwError } from 'rxjs';
 import { CharacterService } from '../characters/service/character.service';
-import { Character, CharacterDetail } from '../store/app.state';
+import { AppState, Character, CharacterDetail } from '../store/app.state';
 import { pick } from 'lodash';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class CharactersEffects {
@@ -17,8 +25,10 @@ export class CharactersEffects {
         this.characterService.fetchCharacters().pipe(
           map((data: any) => {
             const list: Character[] = data.results;
+            const totalRecords = data.total_records;
             return CharacterActions.fetchCharactersSuccess({
               characters: list,
+              totalRecords,
             });
           }),
           catchError((err) => throwError(() => err))
@@ -66,6 +76,7 @@ export class CharactersEffects {
   );
 
   constructor(
+    private store: Store<AppState>,
     private actions$: Actions,
     private characterService: CharacterService
   ) {}

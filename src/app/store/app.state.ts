@@ -23,6 +23,8 @@ export interface CharacterState {
   isFetching: boolean;
   characterDetail: Record<string, Partial<CharacterDetail>>;
   currPage: number;
+  totalRecords: number;
+  fetchedPages: number[];
 }
 
 export interface AppState {
