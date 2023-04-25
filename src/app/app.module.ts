@@ -21,6 +21,7 @@ import {
   BrowserAnimationsModule,
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {
     HeaderComponent,
     CharacterDetailComponent,
     HomeworldComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

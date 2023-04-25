@@ -36,8 +36,6 @@ export class HomeworldComponent {
     this.homeworldDetail$ = this.store.select((state) =>
       selectHomeworldDetail(state, this.id)
     );
-
-    this.homeworldDetail$.subscribe((data) => console.log(data));
   }
 
   ngOnInit(): void {
