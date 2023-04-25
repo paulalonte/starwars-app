@@ -21,7 +21,7 @@ export class CharactersEffects {
   fetchCharacters$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CharacterActions.fetchCharacters),
-      exhaustMap((action) =>
+      switchMap((action) =>
         this.characterService.fetchCharacters().pipe(
           map((data: any) => {
             const list: Character[] = data.results;
