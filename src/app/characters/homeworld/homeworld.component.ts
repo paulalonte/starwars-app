@@ -21,6 +21,7 @@ export class HomeworldComponent {
   routeSubscription!: Subscription;
   isFetching$!: Observable<boolean>;
   homeworldDetail$!: Observable<HomeworldDetail>;
+  hasError$!: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -36,10 +37,20 @@ export class HomeworldComponent {
     this.homeworldDetail$ = this.store.select((state) =>
       selectHomeworldDetail(state, this.id)
     );
+
+    this.hasError$ = this.store.select(
+      (state) => state.characterState.hasError
+    );
   }
 
   ngOnInit(): void {
     this.store.dispatch(fetchHomeworld({ id: this.id }));
+
+    this.hasError$.subscribe((data) => {
+      if (data) {
+        this.router.navigate(['not-found']);
+      }
+    });
   }
 
   onBack() {

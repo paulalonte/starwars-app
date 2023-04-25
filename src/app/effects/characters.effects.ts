@@ -14,6 +14,7 @@ import { CharacterService } from '../characters/service/character.service';
 import { AppState, Character, CharacterDetail } from '../store/app.state';
 import { pick } from 'lodash';
 import { Store } from '@ngrx/store';
+import { setError } from '../store/character/character.actions';
 
 @Injectable()
 export class CharactersEffects {
@@ -71,7 +72,14 @@ export class CharactersEffects {
                 id,
               });
             }),
-            catchError((err) => throwError(() => err))
+            catchError((err) =>
+              throwError(() => {
+                if (err.status === 404) {
+                  return this.store.dispatch(setError({ hasError: true }));
+                }
+                return err;
+              })
+            )
           );
         } else {
           return of(CharacterActions.resetLoading());
@@ -101,7 +109,14 @@ export class CharactersEffects {
                 id,
               });
             }),
-            catchError((err) => throwError(() => err))
+            catchError((err) =>
+              throwError(() => {
+                if (err.status === 404) {
+                  return this.store.dispatch(setError({ hasError: true }));
+                }
+                return err;
+              })
+            )
           );
         } else {
           return of(CharacterActions.resetLoading());

@@ -34,3 +34,8 @@ export const setCurrentPage = createAction(
 );
 
 export const resetLoading = createAction('[Character] reset loading');
+
+export const setError = createAction(
+  '[Character] Set error page',
+  props<{ hasError: boolean }>()
+);

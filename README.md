@@ -45,6 +45,7 @@ npm run test
 - I added some e2e cypress test for character list and character detail.
 - I added some basic karma unit test
 - Users can go to Star Wars list page and navigate to different pages. This will also retain the current page when you go back from details page.
+- Added 404 page
 
 ## Things to improve
 

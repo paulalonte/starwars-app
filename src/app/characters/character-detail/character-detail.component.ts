@@ -21,6 +21,7 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
   characterDetail$: Observable<Partial<CharacterDetail>>;
   routeSubscription!: Subscription;
   isFetching$!: Observable<boolean>;
+  hasError$!: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>,
@@ -36,10 +37,20 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
     this.characterDetail$ = this.store.select((state) =>
       selectCharacterDetail(state, this.id)
     );
+
+    this.hasError$ = this.store.select(
+      (state) => state.characterState.hasError
+    );
   }
 
   ngOnInit(): void {
     this.store.dispatch(fetchCharacter({ id: this.id }));
+
+    this.hasError$.subscribe((data) => {
+      if (data) {
+        this.router.navigate(['not-found']);
+      }
+    });
   }
 
   onHomeworldClick() {

@@ -11,6 +11,7 @@ export const initialState: CharacterState = {
   totalRecords: 0,
   fetchedPages: [1],
   homeworldDetail: {},
+  hasError: false,
 };
 
 export const characterReducer = createReducer(
@@ -60,7 +61,14 @@ export const characterReducer = createReducer(
   on(CharacterActions.resetLoading, (state) => {
     return {
       ...state,
+      hasError: false,
       isFetching: false,
+    };
+  }),
+  on(CharacterActions.setError, (state, { hasError }) => {
+    return {
+      ...state,
+      hasError,
     };
   })
 );

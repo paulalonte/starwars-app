@@ -40,6 +40,7 @@ export interface CharacterState {
   totalRecords: number;
   fetchedPages: number[];
   homeworldDetail: Record<string, HomeworldDetail>;
+  hasError: boolean; // this error should be an object and needs to be in the global app state. This is just for showing error page when api fails.
 }
 
 export interface AppState {
