@@ -56,7 +56,7 @@ npm run test
 
 - Caching of the page so no need to call api again
 
-- Translation also would be good for accessibility
+- Translation also would be good for accessibility. Using i18n
 
 - Created a more detailed test
 
