@@ -56,5 +56,11 @@ export const characterReducer = createReducer(
       currPage: page,
       fetchedPages: [...state.fetchedPages, page],
     };
+  }),
+  on(CharacterActions.resetLoading, (state) => {
+    return {
+      ...state,
+      isFetching: false,
+    };
   })
 );

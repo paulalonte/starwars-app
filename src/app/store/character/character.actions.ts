@@ -19,7 +19,7 @@ export const fetchCharacterSuccess = createAction(
 );
 
 export const fetchHomeworld = createAction(
-  '[Character] Fetch character',
+  '[Character] Fetch homeworld',
   props<{ id: string }>()
 );
 
@@ -32,3 +32,5 @@ export const setCurrentPage = createAction(
   '[Character] Set current page',
   props<{ page: number }>()
 );
+
+export const resetLoading = createAction('[Character] reset loading');
