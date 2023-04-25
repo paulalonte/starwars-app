@@ -13,6 +13,9 @@ The application is using NgRx for state management to easily handle state change
 ## Usage
 
 ```
+# install dependencies
+npm install
+
 # run app
 npm run start
 
