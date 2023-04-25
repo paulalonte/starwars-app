@@ -1,10 +1,12 @@
 <section class="page-padding flex-container">
-  <h2 [attr.data-cy]="'header'">{{ headerText }}</h2>
+  <h2 [attr.data-cy]="'header'" tabindex="0">
+    {{ headerText }}
+  </h2>
   <div
     class="spinner-border text-secondary"
     role="status"
     *ngIf="isFetching$ | async"
   >
-    <span class="visually-hidden">Loading...</span>
+    <span class="visually-hidden">Loading {{ headerText }}</span>
   </div>
 </section>

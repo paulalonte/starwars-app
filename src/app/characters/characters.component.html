@@ -9,9 +9,14 @@
           class="list-group-item"
           [attr.data-cy]="'character-list'"
         >
-          <a class="nav-link" (click)="onCharacterClick(character)">{{
-            character.name
-          }}</a>
+          <a
+            class="nav-link"
+            (click)="onCharacterClick(character)"
+            (keydown.enter)="onCharacterClick(character)"
+            tabindex="0"
+            role="button"
+            >{{ character.name }}</a
+          >
         </li>
       </ul>
     </div>
@@ -31,7 +36,9 @@
             <a
               class="page-link"
               (click)="onPaginationClick(page)"
+              (keydown.enter)="onPaginationClick(page)"
               [attr.data-cy-page]="page"
+              tabindex="0"
               >{{ page }}</a
             >
           </li>
