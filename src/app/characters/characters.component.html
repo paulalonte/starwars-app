@@ -3,10 +3,11 @@
     <app-header [headerText]="'Star Wars Characters'"></app-header>
 
     <div class="list">
-      <ul class="list-group">
+      <ul class="list-group" [attr.data-cy]="'characters-container'">
         <li
           *ngFor="let character of characters$ | async"
           class="list-group-item"
+          [attr.data-cy]="'character-list'"
         >
           <a class="nav-link" (click)="onCharacterClick(character)">{{
             character.name
@@ -25,10 +26,14 @@
             class="page-item"
             *ngFor="let page of totalPages"
             [ngClass]="{ active: selectedPage === page }"
+            [attr.data-cy-page-item]="page"
           >
-            <a class="page-link" (click)="onPaginationClick(page)">{{
-              page
-            }}</a>
+            <a
+              class="page-link"
+              (click)="onPaginationClick(page)"
+              [attr.data-cy-page]="page"
+              >{{ page }}</a
+            >
           </li>
         </ul>
       </nav>

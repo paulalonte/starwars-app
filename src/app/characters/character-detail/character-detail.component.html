@@ -3,7 +3,13 @@
     <div class="col-md-3">
       <app-header [headerText]="(characterDetail$ | async)?.name"></app-header>
       <div class="homeworld-btn" *ngIf="!(isFetching$ | async)">
-        <button class="btn btn-secondary" (click)="onBack()">Back</button>
+        <button
+          class="btn btn-secondary"
+          (click)="onBack()"
+          [attr.data-cy]="'back'"
+        >
+          Back
+        </button>
         <button class="btn btn-primary" (click)="onHomeworldClick()">
           See homeworld
         </button>
@@ -21,7 +27,9 @@
               <div class="fw-normal detail-key">
                 {{ detail.key.replace("_", " ") | uppercase }}
               </div>
-              <span>{{ detail.value | titlecase }}</span>
+              <span [attr.data-cy-detail]="detail.key">{{
+                detail.value | titlecase
+              }}</span>
             </div>
           </li>
         </ol>
