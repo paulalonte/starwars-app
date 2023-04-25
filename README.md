@@ -33,7 +33,7 @@ npm run test
 ## What are the features created
 
 - I used .scss for this application. This could be improve by creating variables to have a consistent look in all pages however lack of time already.
-
+- Api call prevention when loading character and homeworld details when data is already present in store. You can check in the network tab
 - Used Angular routing for navigating to different pages. (e.g.)
 
   - localhost:4200/characters
@@ -41,23 +41,15 @@ npm run test
   - localhost:4200/characters/1/planet/8
 
 - Handled state management using NgRx together with effects
-
 - UX/UI I just used bootstrap to make elements have a default styling already
-
 - I added some e2e cypress test for character list and character detail.
-
 - I added some basic karma unit test
-
 - Users can go to Star Wars list page and navigate to different pages. This will also retain the current page when you go back from details page.
 
 ## Things to improve
 
 - I don’t have an error component if in case there is an error in the api call. I could have added some error in the store
-
-- Caching of the page so no need to call api again
-
+- Preventing api call for the characters page list. I only had the prevention of the api call in character detail and homeworld detail.
 - Translation also would be good for accessibility. Using i18n
-
 - Created a more detailed test
-
 - I could have created shareable components for the detail and home world page since it’s the same. But I have don’t much time. I could just reuse it
