@@ -26,7 +26,7 @@ npm run test
 
 ## UI
 
-- I used bootstrap for UI
+- I used bootstrap for UI. This is also responsive using mobile phone, tablet and desktop size.
 - I could have added Skeleton when loading UI for better User experience
 - I added some basic accessibility to navigate through pages. You can test using Screen Reader/ Chromevox extension for screen reader. This can be improved by also adding live regions. (polite, or assertive)
 
