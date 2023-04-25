@@ -49,7 +49,6 @@ npm run test
 
 ## Things to improve
 
-- I don’t have an error component if in case there is an error in the api call. I could have added some error in the store
 - Preventing api call for the characters page list. I only had the prevention of the api call in character detail and homeworld detail.
 - Translation also would be good for accessibility. Using i18n
 - Created a more detailed test
