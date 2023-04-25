@@ -10,6 +10,7 @@ export const initialState: CharacterState = {
   currPage: 1,
   totalRecords: 0,
   fetchedPages: [1],
+  homeworldDetail: {},
 };
 
 export const characterReducer = createReducer(
@@ -36,6 +37,17 @@ export const characterReducer = createReducer(
       ...state,
       isFetching: false,
       characterDetail: { ...state.characterDetail, [id]: detail },
+    };
+  }),
+  on(CharacterActions.fetchHomeworld, (state) => ({
+    ...state,
+    isFetching: true,
+  })),
+  on(CharacterActions.fetchHomeworldSuccess, (state, { homeworld, id }) => {
+    return {
+      ...state,
+      isFetching: false,
+      homeworldDetail: { ...state.homeworldDetail, [id]: homeworld },
     };
   }),
   on(CharacterActions.setCurrentPage, (state, { page }) => {

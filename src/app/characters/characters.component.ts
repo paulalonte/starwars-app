@@ -14,10 +14,47 @@ import { map, Observable, tap, Subscription } from 'rxjs';
 import { AppState, Character } from '../store/app.state';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  query,
+  stagger,
+} from '@angular/animations';
+
+export const fadeAnimation = trigger('fadeAnimation', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('300ms', style({ opacity: 1 })),
+  ]),
+  transition(':leave', [
+    style({ opacity: 1 }),
+    animate('300ms', style({ opacity: 0 })),
+  ]),
+]);
+
+const listAnimation = trigger('listAnimation', [
+  transition('* <=> *', [
+    query(
+      ':enter',
+      [
+        style({ opacity: 0 }),
+        stagger('60ms', animate('600ms ease-out', style({ opacity: 1 }))),
+      ],
+      { optional: true }
+    ),
+    query(':leave', animate('200ms', style({ opacity: 0 })), {
+      optional: true,
+    }),
+  ]),
+]);
+
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss'],
+  animations: [listAnimation, fadeAnimation],
 })
 export class CharactersComponent implements OnInit, OnDestroy {
   characters$!: Observable<Character[]>;

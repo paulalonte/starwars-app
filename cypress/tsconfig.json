@@ -1,8 +1,27 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["**/*.ts"],
   "compilerOptions": {
-    "sourceMap": false,
-    "types": ["cypress"]
-  }
+     "noEmit": true,
+     "types": ["cypress"]
+  },
+  "include": [
+      "../node_modules/cypress",
+      "./**/*.ts"
+  ]
 }
+// {
+//   "extends": "../tsconfig.json",
+//   "compilerOptions": {
+//     "sourceMap": false,
+//     "types": ["cypress"],
+//     "isolatedModules": false
+//   },
+//   "types": ["cypress", "chai"],
+//   "include": [
+//     "**/*.ts",
+//     "../cypress/**/*.ts",
+//     "../cypress.config.ts",
+//     "../node_modules/cypress/**/*.ts"
+//   ]
+// }
+

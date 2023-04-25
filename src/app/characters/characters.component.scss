@@ -1,3 +1,12 @@
+ .main-character-list {
+    // https://freepngimg.com/save/16912-star-wars-jedi-png/1023x877
+    background: url("https://pngimg.com/d/starwars_PNG27.png") no-repeat;
+    background-size: 200px auto;
+    background-position: right top;
+    height: 100%;
+}
+
+
 .list-group-item {
     cursor: pointer;
     a {

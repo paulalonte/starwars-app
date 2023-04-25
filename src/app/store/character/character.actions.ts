@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Character, CharacterDetail } from '../app.state';
+import { Character, CharacterDetail, HomeworldDetail } from '../app.state';
 
 export const fetchCharacters = createAction('[Character] Fetch characters');
 
@@ -16,6 +16,16 @@ export const fetchCharacter = createAction(
 export const fetchCharacterSuccess = createAction(
   '[Character] Fetch character success',
   props<{ detail: CharacterDetail; id: string }>()
+);
+
+export const fetchHomeworld = createAction(
+  '[Character] Fetch character',
+  props<{ id: string }>()
+);
+
+export const fetchHomeworldSuccess = createAction(
+  '[Character] Fetch homeworld success',
+  props<{ homeworld: HomeworldDetail; id: string }>()
 );
 
 export const setCurrentPage = createAction(

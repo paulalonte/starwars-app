@@ -1,27 +1,29 @@
-<div class="container">
-  <div class="row">
-    <app-header [headerText]="'Star Wars Home Page'"></app-header>
-    <main>
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Angular Challenge</h1>
-            <p class="lead text-muted">
-              The application is using NgRx for state management to easily
-              handle state changes. Added @effects also to handle side effects
-              when calling api endpoints. This way we reduce the business logic
-              in component level. The data flow of this application is we send
-              an action, run side effects to call api, and on success we
-              dispatch success action to update our store.
-            </p>
-            <p>
-              <a class="btn btn-primary my-2" [routerLink]="'/characters'"
-                >Explore Characters</a
-              >
-            </p>
+<div class="container-fluid home">
+  <div class="container">
+    <div class="row">
+      <app-header [headerText]="'Star Wars Home Page'"></app-header>
+      <main>
+        <section class="py-5 text-center container">
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">Angular Challenge</h1>
+              <p class="lead text-muted">
+                The application is using NgRx for state management to easily
+                handle state changes. Added @effects also to handle side effects
+                when calling api endpoints. This way we reduce the business
+                logic in component level. The data flow of this application is
+                we send an action, run side effects to call api, and on success
+                we dispatch success action to update our store.
+              </p>
+              <p>
+                <a class="btn btn-primary my-2" [routerLink]="'/characters'"
+                  >Explore Characters</a
+                >
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   </div>
 </div>

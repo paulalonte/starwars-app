@@ -17,3 +17,6 @@ export const selectCurrentPage = (state: AppState) =>
 
 export const selectCharacterDetail = (state: AppState, id: string) =>
   state.characterState.characterDetail[id];
+
+export const selectHomeworldDetail = (state: AppState, id: string) =>
+  state.characterState.homeworldDetail[id];

@@ -68,6 +68,26 @@ export class CharactersEffects {
     )
   );
 
+  fetchHomeworld$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CharacterActions.fetchHomeworld),
+      exhaustMap((action) =>
+        this.characterService.fetchHomeworld(action.id).pipe(
+          map((data: any) => {
+            const id = data.result.uid;
+            const homeworld: any = data.result.properties;
+
+            return CharacterActions.fetchHomeworldSuccess({
+              homeworld,
+              id,
+            });
+          }),
+          catchError((err) => throwError(() => err))
+        )
+      )
+    )
+  );
+
   setCurrentPage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CharacterActions.setCurrentPage),

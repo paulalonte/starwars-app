@@ -46,7 +46,6 @@ export class CharacterDetailComponent implements OnInit, OnDestroy {
     this.characterDetail$.subscribe((data) => {
       const planetId = data.homeworld?.split('/').pop();
 
-      console.log(planetId);
       this.router.navigate([`planet/${planetId}`], {
         relativeTo: this.activatRoute,
       });

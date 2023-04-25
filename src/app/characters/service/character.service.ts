@@ -33,7 +33,7 @@ export class CharacterService {
     return this.http.get(`${this.apiURL}/${id}`);
   }
 
-  fetchPlanet(id: string) {
+  fetchHomeworld(id: string) {
     return this.http.get(`${this.planetUrl}/${id}`);
   }
 }

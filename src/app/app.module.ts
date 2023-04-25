@@ -17,6 +17,10 @@ import { CharactersEffects } from './effects/characters.effects';
 import { HeaderComponent } from './shared/header/header.component';
 import { CharacterDetailComponent } from './characters/character-detail/character-detail.component';
 import { HomeworldComponent } from './characters/homeworld/homeworld.component';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,8 @@ import { HomeworldComponent } from './characters/homeworld/homeworld.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
