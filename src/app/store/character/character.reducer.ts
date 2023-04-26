@@ -4,7 +4,7 @@ import { CharacterState } from '../app.state';
 import * as CharacterActions from './character.actions';
 
 export const initialState: CharacterState = {
-  characters: [],
+  characters: {},
   isFetching: false,
   characterDetail: {},
   currPage: 1,
@@ -25,7 +25,7 @@ export const characterReducer = createReducer(
     (state, { characters, totalRecords }) => ({
       ...state,
       isFetching: false,
-      characters,
+      characters: { ...state.characters, [state.currPage]: characters },
       totalRecords,
     })
   ),

@@ -64,7 +64,9 @@ export class CharactersComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
     this.isFetching$ = this.store.select(selectIsFetching);
-    this.characters$ = this.store.select(selectCharacters);
+    this.characters$ = this.store.select((state) =>
+      selectCharacters(state, this.selectedPage)
+    );
     this.storeSubscription = this.store
       .select(selectCharactersReducer)
       .subscribe((data) => {
@@ -83,7 +85,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(fetchCharacters());
+    this.store.dispatch(fetchCharacters({ page: this.selectedPage }));
   }
 
   onCharacterClick(character: Character) {

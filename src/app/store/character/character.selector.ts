@@ -7,10 +7,8 @@ export const selectCharactersReducer = (state: AppState) =>
 export const selectIsFetching = (state: AppState) =>
   state.characterState.isFetching;
 
-export const selectCharacters = createSelector(
-  selectCharactersReducer,
-  (state: CharacterState) => state.characters
-);
+export const selectCharacters = (state: AppState, page: number) =>
+  state.characterState.characters[page];
 
 export const selectCurrentPage = (state: AppState) =>
   state.characterState.currPage;

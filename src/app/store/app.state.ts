@@ -33,7 +33,7 @@ export interface Character {
 }
 
 export interface CharacterState {
-  characters: Character[];
+  characters: Record<string, Character[]>;
   isFetching: boolean;
   characterDetail: Record<string, Partial<CharacterDetail>>;
   currPage: number;

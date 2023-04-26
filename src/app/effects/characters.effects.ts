@@ -21,19 +21,26 @@ export class CharactersEffects {
   fetchCharacters$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CharacterActions.fetchCharacters),
-      switchMap((action) =>
-        this.characterService.fetchCharacters().pipe(
-          map((data: any) => {
-            const list: Character[] = data.results;
-            const totalRecords = data.total_records;
-            return CharacterActions.fetchCharactersSuccess({
-              characters: list,
-              totalRecords,
-            });
-          }),
-          catchError((err) => throwError(() => err))
-        )
-      )
+      withLatestFrom(
+        this.store.select((state) => state.characterState.characters)
+      ),
+      switchMap(([action, charactersObj]) => {
+        if (charactersObj[action.page] === undefined) {
+          return this.characterService.fetchCharacters().pipe(
+            map((data: any) => {
+              const list: Character[] = data.results;
+              const totalRecords = data.total_records;
+              return CharacterActions.fetchCharactersSuccess({
+                characters: list,
+                totalRecords,
+              });
+            }),
+            catchError((err) => throwError(() => err))
+          );
+        } else {
+          return of(CharacterActions.resetLoading());
+        }
+      })
     )
   );
 
@@ -128,7 +135,7 @@ export class CharactersEffects {
   setCurrentPage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CharacterActions.setCurrentPage),
-      map(() => CharacterActions.fetchCharacters())
+      map((action) => CharacterActions.fetchCharacters({ page: action.page }))
     )
   );
 
