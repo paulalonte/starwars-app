@@ -36,7 +36,7 @@ npm run test
 ## What are the features created
 
 - I used .scss for this application. This could be improve by creating variables to have a consistent look in all pages however lack of time already.
-- Api call prevention when loading character and homeworld details when data is already present in store. You can check in the network tab
+- Api call prevention when loading character list, character and homeworld details when data is already present in store. You can check in the network tab
 - Used Angular routing for navigating to different pages. (e.g.)
 
   - localhost:4200/characters
@@ -52,7 +52,6 @@ npm run test
 
 ## Things to improve
 
-- Preventing api call for the characters page list. I only had the prevention of the api call in character detail and homeworld detail.
 - Translation also would be good for accessibility. Using i18n
 - Created a more detailed test
 - I could have created shareable components for the detail and home world page since it’s the same. But I have don’t much time. I could just reuse it

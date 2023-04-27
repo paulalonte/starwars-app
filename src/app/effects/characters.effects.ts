@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import {
-  map,
-  catchError,
-  exhaustMap,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { map, catchError, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import * as CharacterActions from '../store/character/character.actions';
 import { of, throwError } from 'rxjs';
