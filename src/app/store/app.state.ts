@@ -32,14 +32,17 @@ export interface Character {
   url: string;
 }
 
+export interface Detail<T> {
+  [id: string]: T;
+}
 export interface CharacterState {
   characters: Record<string, Character[]>;
   isFetching: boolean;
-  characterDetail: Record<string, Partial<CharacterDetail>>;
+  characterDetail: Detail<CharacterDetail>;
   currPage: number;
   totalRecords: number;
   fetchedPages: number[];
-  homeworldDetail: Record<string, HomeworldDetail>;
+  homeworldDetail: Detail<HomeworldDetail>;
   hasError: boolean; // this error should be an object and needs to be in the global app state. This is just for showing error page when api fails.
 }
 
