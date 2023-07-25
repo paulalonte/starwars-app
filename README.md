@@ -1,10 +1,6 @@
-# HenkelDx
+# Starwars App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
-
-# Challenge
-
-Star wars app
 
 ## Description
 
@@ -29,9 +25,8 @@ npm run test
 
 ## UI
 
-- I used bootstrap for UI. This is also responsive using mobile phone, tablet and desktop size.
-- I could have added Skeleton when loading UI for better User experience
-- I added some basic accessibility to navigate through pages. You can test using Screen Reader/ Chromevox extension for screen reader. This can be improved by also adding live regions. (polite, or assertive)
+- Bootstrap for UI. This is also responsive using mobile phone, tablet and desktop size.
+- Accessibility to navigate through pages. You can test using Screen Reader/ Chromevox extension for screen reader. This can be improved by also adding live regions. (polite, or assertive)
 
 ## What are the features created
 
@@ -43,15 +38,7 @@ npm run test
   - localhost:4200/characters/1
   - localhost:4200/characters/1/planet/8
 
-- Handled state management using NgRx together with effects
-- UX/UI I just used bootstrap to make elements have a default styling already
 - I added some e2e cypress test for character list and character detail.
 - I added some basic karma unit test
 - Users can go to Star Wars list page and navigate to different pages. This will also retain the current page when you go back from details page.
 - Added 404 page. Redirecting to 404 page also when api call fails/error.
-
-## Things to improve
-
-- Translation also would be good for accessibility. Using i18n
-- Created a more detailed test
-- I could have created shareable components for the detail and home world page since it’s the same. But I have don’t much time. I could just reuse it
